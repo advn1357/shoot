@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbaw4b55sovfu"]
+
+[ext_resource type="PackedScene" uid="uid://bh4mt4tll6h3d" path="res://sceens/entity/player.tscn" id="1_dknjh"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_w014r"]
+[ext_resource type="PackedScene" uid="uid://wq6yx58qqhi1" path="res://sceens/entity/enemy.tscn" id="2_cq11w"]
+[ext_resource type="PackedScene" uid="uid://bho85s71uid4a" path="res://sceens/entity/enemy_bullet.tscn" id="3_l01ff"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_w014r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player" parent="." instance=ExtResource("1_dknjh")]
+position = Vector2(248, 696)
+scale = Vector2(0.25, 0.25)
+
+[node name="Enemy" parent="." instance=ExtResource("2_cq11w")]
+position = Vector2(232, -40)
+scale = Vector2(0.25, 0.25)
+
+[node name="Bullet" parent="." groups=["bullet"] instance=ExtResource("3_l01ff")]
+position = Vector2(235, 193)
+
+[connection signal="player_shoot" from="Player" to="." method="_on_player_player_shoot"]
+[connection signal="on_damage" from="Enemy" to="." method="_on_enemy_on_damage"]
+[connection signal="on_death" from="Enemy" to="." method="_on_enemy_on_death"]
+[connection signal="reach_bottom" from="Enemy" to="." method="_on_enemy_reach_bottom"]
+[connection signal="player_enter" from="Bullet" to="." method="_on_bullet_player_enter"]

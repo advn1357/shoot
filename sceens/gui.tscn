@@ -1,0 +1,171 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsstn7ohewprq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_57rpv"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_i4ne4"]
+font_color = Color(1, 0.207843, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6apn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4jk6"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c62yw"]
+bg_color = Color(0.976471, 0.152941, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2ate"]
+bg_color = Color(0.0205544, 0.0674386, 0.14585, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nd554"]
+bg_color = Color(0.173487, 0.49829, 0.824617, 1)
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_right = 222.0
+offset_bottom = 45.0
+text = "0000000000000"
+label_settings = SubResource("LabelSettings_57rpv")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -3.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "00:00:00"
+horizontal_alignment = 2
+
+[node name="SPS" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_top = 23.0
+offset_right = -3.0
+offset_bottom = 46.0
+grow_horizontal = 0
+text = "00000.000/s"
+horizontal_alignment = 2
+
+[node name="CastleHealth" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -44.0
+offset_right = 42.0
+offset_bottom = -21.0
+grow_vertical = 0
+text = "00"
+label_settings = SubResource("LabelSettings_i4ne4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6apn")
+
+[node name="SplitContainer" type="HSplitContainer" parent="Panel"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+dragger_visibility = 1
+
+[node name="HealthBar" type="ProgressBar" parent="Panel/SplitContainer"]
+custom_minimum_size = Vector2(240, 21)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_g4jk6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c62yw")
+value = 40.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="Panel/SplitContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -23.0
+offset_right = 48.0
+grow_vertical = 0
+text = "00000"
+
+[node name="ManaBar" type="ProgressBar" parent="Panel/SplitContainer"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y2ate")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nd554")
+value = 30.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="Panel/SplitContainer/ManaBar"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -23.0
+offset_right = 48.0
+grow_vertical = 0
+text = "00000"
+
+[node name="MobileMove" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -179.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="L" type="Button" parent="MobileMove"]
+layout_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -103.0
+offset_right = -377.0
+offset_bottom = -3.0
+text = "LEFT"
+
+[node name="R" type="Button" parent="MobileMove"]
+layout_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 375.0
+offset_top = -103.0
+offset_right = -5.0
+offset_bottom = -3.0
+text = "RIGHT"
