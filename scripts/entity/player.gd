@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed = 250
 @export var max_health = 1000
 @export var max_mana = 100
-@export var mana_charge = 12
+@export var mana_charge = 10
 
 @export var shoot_cost = 4
 

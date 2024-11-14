@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var speed = 150
-@export var max_health = 5
+@export var speed = 130
+@export var max_health = 3
 
 var health = max_health
 
@@ -14,7 +14,7 @@ func _ready() -> void:
 	$ProgressBar.max_value = max_health
 
 func damage(damage:int):
-	on_damage.emit(damage)
+	on_damage.emit(damage*2)
 	health -= damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
